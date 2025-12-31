@@ -124,7 +124,7 @@ nav {
     padding: 10px 0;
 }
 
-.globe-icon {
+.lang-icon {
     width: 24px;
     height: 24px;
     cursor: pointer;
@@ -133,7 +133,7 @@ nav {
     transition: filter 0.3s, opacity 0.3s;
 }
 
-.lang-dropdown:hover .globe-icon {
+.lang-dropdown:hover .lang-icon {
     filter: grayscale(0%);
     opacity: 1;
 }

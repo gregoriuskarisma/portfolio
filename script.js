@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // ============================================
-    // 1. LANGUAGE TOGGLE LOGIC
-    // ============================================
     const body = document.body;
     const langLinks = document.querySelectorAll('.lang-select');
 
@@ -30,17 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ============================================
-    // 2. RANDOM STARFIELD GENERATOR
-    // ============================================
     function generateSpaceBackground() {
-        const layer1Count = 200; // Distant, small stars
-        const layer2Count = 100; // Closer, brighter stars
+        const layer1Count = 200;
+        const layer2Count = 100;
 
         function getShadows(count) {
             let shadows = [];
             for (let i = 0; i < count; i++) {
-                // Random position between 0 and 100 (vw/vh)
                 const x = Math.floor(Math.random() * 100);
                 const y = Math.floor(Math.random() * 100);
                 shadows.push(`${x}vw ${y}vh #fff`);
@@ -51,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const layer1Shadows = getShadows(layer1Count);
         const layer2Shadows = getShadows(layer2Count);
 
-        // Create a dynamic style element to inject these random values
         const style = document.createElement('style');
         style.innerHTML = `
             body::before {
@@ -64,6 +56,5 @@ document.addEventListener('DOMContentLoaded', () => {
         document.head.appendChild(style);
     }
 
-    // Initialize the stars
     generateSpaceBackground();
 });

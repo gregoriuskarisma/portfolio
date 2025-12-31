@@ -1,34 +1,69 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('lang-toggle');
+    // ============================================
+    // 1. LANGUAGE TOGGLE LOGIC
+    // ============================================
     const body = document.body;
+    const langLinks = document.querySelectorAll('.lang-select');
 
-    // 1. Check if user has a saved preference from a previous page
-    const savedLang = localStorage.getItem('preferredLanguage');
-
-    // If they chose English before, apply it immediately
-    if (savedLang === 'en') {
-        body.classList.remove('lang-zh');
-        body.classList.add('lang-en');
-        toggleBtn.innerText = "中文";
-        document.documentElement.lang = "en";
-    }
-
-    // 2. Listen for clicks
-    toggleBtn.addEventListener('click', () => {
-        if (body.classList.contains('lang-zh')) {
-            // Switch to English
+    function setLanguage(lang) {
+        if (lang === 'en') {
             body.classList.remove('lang-zh');
             body.classList.add('lang-en');
-            toggleBtn.innerText = "中文";
             document.documentElement.lang = "en";
-            localStorage.setItem('preferredLanguage', 'en'); // Save choice
         } else {
-            // Switch to Chinese
             body.classList.remove('lang-en');
             body.classList.add('lang-zh');
-            toggleBtn.innerText = "English";
             document.documentElement.lang = "zh";
-            localStorage.setItem('preferredLanguage', 'zh'); // Save choice
         }
+        localStorage.setItem('preferredLanguage', lang);
+    }
+
+    const savedLang = localStorage.getItem('preferredLanguage');
+    if (savedLang) {
+        setLanguage(savedLang);
+    }
+
+    langLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            const lang = this.getAttribute('data-lang');
+            setLanguage(lang);
+        });
     });
+
+    // ============================================
+    // 2. RANDOM STARFIELD GENERATOR
+    // ============================================
+    function generateSpaceBackground() {
+        const layer1Count = 200; // Distant, small stars
+        const layer2Count = 100; // Closer, brighter stars
+
+        function getShadows(count) {
+            let shadows = [];
+            for (let i = 0; i < count; i++) {
+                // Random position between 0 and 100 (vw/vh)
+                const x = Math.floor(Math.random() * 100);
+                const y = Math.floor(Math.random() * 100);
+                shadows.push(`${x}vw ${y}vh #fff`);
+            }
+            return shadows.join(', ');
+        }
+
+        const layer1Shadows = getShadows(layer1Count);
+        const layer2Shadows = getShadows(layer2Count);
+
+        // Create a dynamic style element to inject these random values
+        const style = document.createElement('style');
+        style.innerHTML = `
+            body::before {
+                box-shadow: ${layer1Shadows};
+            }
+            body::after {
+                box-shadow: ${layer2Shadows};
+            }
+        `;
+        document.head.appendChild(style);
+    }
+
+    // Initialize the stars
+    generateSpaceBackground();
 });

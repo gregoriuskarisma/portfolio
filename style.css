@@ -1,20 +1,45 @@
-/* ===========================
-   1. GLOBAL RESET & BASICS
-   =========================== */
 body {
-    background-color: #000000; /* Pure Black */
-    color: #A0A0A0; /* Medium Grey */
+    background-color: #000000;
+    color: #A0A0A0;
     font-family: "Helvetica Neue", Arial, sans-serif;
     margin: 0;
     padding: 0;
     line-height: 1.6;
+    overflow-x: hidden;
+    position: relative;
 }
 
-/* ===========================
-   2. TYPOGRAPHY
-   =========================== */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    background: transparent;
+}
+
+body::before {
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    opacity: 0.5;
+    animation: twinkle-slow 6s ease-in-out infinite alternate;
+}
+
+body::after {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: twinkle-fast 4s ease-in-out infinite alternate;
+}
+
 h1 {
-    color: #E0E0E0; /* Light Silver */
+    color: #E0E0E0;
     font-weight: 500;
     font-size: 2.5rem;
     margin-bottom: 10px;
@@ -57,19 +82,16 @@ a:hover {
     color: #ffffff;
 }
 
-/* ===========================
-   3. NAVIGATION
-   =========================== */
 nav {
-    position: sticky; /* Keeps nav visible when scrolling */
+    position: sticky;
     top: 0;
     background-color: #000000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 40px;
+    padding: 1px 40px; 
     border-bottom: 1px solid #333;
-    z-index: 1000; /* Ensures nav stays on top of images */
+    z-index: 1000;
 }
 
 .nav-links {
@@ -82,37 +104,90 @@ nav {
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 1px;
+    color: #888888;
+    transition: color 0.3s;
 }
 
-/* Language Toggle Button */
-button#lang-toggle {
-    background: transparent;
-    border: 1px solid #555;
-    color: #A0A0A0;
-    padding: 5px 15px;
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+.nav-links a.active {
+    color: #ffffff;
+    font-weight: 700;
+    cursor: default;
+}
+
+.lang-dropdown {
+    position: relative;
+    display: inline-block;
+    padding: 10px 0;
+}
+
+.globe-icon {
+    width: 24px;
+    height: 24px;
     cursor: pointer;
+    vertical-align: middle;
+    filter: grayscale(100%);
+    transition: filter 0.3s, opacity 0.3s;
+}
+
+.lang-dropdown:hover .globe-icon {
+    filter: grayscale(0%);
+    opacity: 1;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background-color: #111;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    z-index: 2000;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 5px 0;
+}
+
+.lang-dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a {
+    color: #A0A0A0;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+    margin-right: 0;
     font-size: 0.85rem;
+    text-align: left;
+    border-bottom: 1px solid #222;
 }
 
-button#lang-toggle:hover {
-    border-color: #E0E0E0;
-    color: #E0E0E0;
+.dropdown-content a:last-child {
+    border-bottom: none;
 }
 
-/* ===========================
-   4. MAIN LAYOUT
-   =========================== */
+.dropdown-content a:hover {
+    background-color: #222;
+    color: #fff;
+}
+
 main {
     max-width: 900px;
     margin: 40px auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 1;
 }
 
 section {
     margin-bottom: 80px;
 }
 
-/* Use this class on pages that have very little content if you want vertical centering */
 .center-screen {
     min-height: 60vh;
     display: flex;
@@ -120,38 +195,31 @@ section {
     justify-content: center;
 }
 
-/* ===========================
-   5. HOME PAGE SPECIFIC (NEW)
-   =========================== */
-/* The container for the background banner */
 .hero-banner {
     background-image: url('images/home_background.png');
     background-size: cover;
     background-position: center;
     height: 250px; 
-    position: relative; /* Allows absolute positioning of the profile pic */
-    margin-bottom: 80px; /* Space below banner for the profile pic overlap */
+    position: relative;
+    margin-bottom: 80px;
 }
 
-/* The circular profile sketch */
 .profile-pic {
     width: 160px;
     height: 160px;
-    border-radius: 50%; /* Makes it a circle */
+    border-radius: 50%;
     object-fit: cover;
     position: absolute;
     left: 40px; 
-    bottom: -80px; /* Half of height to overlap the bottom edge */
-    border: 5px solid #000000; /* Matches body background */
+    bottom: -80px;
+    border: 5px solid #000000;
 }
 
-/* Container for the text below the banner on Home page */
 .home-content {
-    padding: 0 40px; /* Aligns with the profile pic */
+    padding: 0 40px;
     max-width: 800px;
 }
 
-/* Specific H1 adjustment for Home page */
 .home-content h1 {
     margin-top: 0;
 }
@@ -161,9 +229,6 @@ section {
     color: #888;
 }
 
-/* ===========================
-   6. JOB & CONTENT STYLING
-   =========================== */
 .job-item {
     margin-bottom: 40px;
 }
@@ -188,9 +253,6 @@ li {
     color: #A0A0A0;
 }
 
-/* ===========================
-   7. SERVICES GRID
-   =========================== */
 .services-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -207,27 +269,31 @@ li {
     border-radius: 4px;
 }
 
-/* ===========================
-   8. FOOTER
-   =========================== */
 footer {
     text-align: center;
-    padding: 40px;
+    padding: 1px;
     font-size: 0.8rem;
     color: #555;
     border-top: 1px solid #111;
     margin-top: 100px;
 }
 
-/* ===========================
-   9. LANGUAGE TOGGLE LOGIC
-   =========================== */
-/* If body has class 'lang-zh', hide English elements */
 body.lang-zh .en {
     display: none;
 }
 
-/* If body has class 'lang-en', hide Chinese elements */
 body.lang-en .zh {
     display: none;
+}
+
+@keyframes twinkle-slow {
+    0% { opacity: 0.2; }
+    50% { opacity: 0.8; }
+    100% { opacity: 0.2; }
+}
+
+@keyframes twinkle-fast {
+    0% { opacity: 0.8; }
+    50% { opacity: 0.3; }
+    100% { opacity: 0.8; }
 }

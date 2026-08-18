@@ -1,0 +1,311 @@
+<!--Courses Page-->
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="ms" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        section {
+            scroll-margin-top: 110px;
+        }
+        .course-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .course-list li {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .course-list li::before {
+            content: none !important;
+            display: none !important;
+        }
+        .course-title {
+            font-weight: 600;
+            color: var(--text-header);
+            display: block;
+            margin-bottom: 5px;
+        }
+        .course-level {
+            font-size: 0.9rem;
+            color: var(--text-meta);
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <section id="courses">
+            <h2>
+                <span class="zh-CN">修读课程</span>
+                <span class="zh-TW">修讀課程</span>
+                <span class="en">Courses</span>
+            </h2>
+
+            <div class="job-item">
+                <div class="content-block">
+                    <ul class="course-list">
+                        <li>
+                            <span class="zh-CN"><span class="course-title">代数 2</span><span class="course-level">高中</span></span>
+                            <span class="zh-TW"><span class="course-title">代數 2</span><span class="course-level">高中</span></span>
+                            <span class="en"><span class="course-title">Algebra 2</span><span class="course-level">High School</span></span>
+                            <span class="ja"><span class="course-title">代数 2</span><span class="course-level">高校</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">解剖学与生理学</span><span class="course-level">高中</span></span>
+                            <span class="zh-TW"><span class="course-title">解剖學與生理學</span><span class="course-level">高中</span></span>
+                            <span class="en"><span class="course-title">Anatomy and Physiology</span><span class="course-level">High School</span></span>
+                            <span class="ja"><span class="course-title">解剖生理学</span><span class="course-level">高校</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">AP 微积分 AB</span><span class="course-level">高中</span></span>
+                            <span class="zh-TW"><span class="course-title">AP 微積分 AB</span><span class="course-level">高中</span></span>
+                            <span class="en"><span class="course-title">AP Calculus AB</span><span class="course-level">High School</span></span>
+                            <span class="ja"><span class="course-title">AP 微積分 AB</span><span class="course-level">高校</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">应用化学</span><span class="course-level">高中</span></span>
+                            <span class="zh-TW"><span class="course-title">應用化學</span><span class="course-level">高中</span></span>
+                            <span class="en"><span class="course-title">Applied Chemistry</span><span class="course-level">High School</span></span>
+                            <span class="ja"><span class="course-title">応用化学</span><span class="course-level">高校</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">应用数学</span><span class="course-level">高中</span></span>
+                            <span class="zh-TW"><span class="course-title">應用數學</span><span class="course-level">高中</span></span>
+                            <span class="en"><span class="course-title">Applied Math</span><span class="course-level">High School</span></span>
+                            <span class="ja"><span class="course-title">応用数学</span><span class="course-level">高校</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">基础工程 A</span><span class="course-level">高中</span></span>
+                            <span class="zh-TW"><span class="course-title">基礎工程 A</span><span class="course-level">高中</span></span>
+                            <span class="en"><span class="course-title">Basic Engineering A</span><span class="course-level">High School</span></span>
+                            <span class="ja"><span class="course-title">基礎工学 A</span><span class="course-level">高校</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">基础工程 B</span><span class="course-level">高中</span></span>
+                            <span class="zh-TW"><span class="course-title">基礎工程 B</span><span class="course-level">高中</span></span>
+                            <span class="en"><span class="course-title">Basic Engineering B</span><span class="course-level">High School</span></span>
+                            <span class="ja"><span class="course-title">基礎工学 B</span><span class="course-level">高校</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">生物学</span><span class="course-level">高中</span></span>
+                            <span class="zh-TW"><span class="course-title">生物學</span><span class="course-level">高中</span></span>
+                            <span class="en"><span class="course-title">Biology</span><span class="course-level">High School</span></span>
+                            <span class="ja"><span class="course-title">生物学</span><span class="course-level">高校</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">化学</span><span class="course-level">高中</span></span>
+                            <span class="zh-TW"><span class="course-title">化學</span><span class="course-level">高中</span></span>
+                            <span class="en"><span class="course-title">Chemistry</span><span class="course-level">High School</span></span>
+                            <span class="ja"><span class="course-title">化学</span><span class="course-level">高校</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">暗数据迁移与架构</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">暗數據遷移與架構</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Dark Data Migration and Architecture</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">ダークデータ移行とアーキテクチャ</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">基于 R 的数据分析</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">基於 R 的資料分析</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Data Analysis with R</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">Rによるデータ分析</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">实验设计</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">實驗設計</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Design of Experiments</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">実験計画法</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">环境科学</span><span class="course-level">高中</span></span>
+                            <span class="zh-TW"><span class="course-title">環境科學</span><span class="course-level">高中</span></span>
+                            <span class="en"><span class="course-title">Environmental Science</span><span class="course-level">High School</span></span>
+                            <span class="ja"><span class="course-title">環境科学</span><span class="course-level">高校</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">材料科学基础</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">材料科學基礎</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Fundamentals of Materials Science</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">材料科学基礎</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">几何学</span><span class="course-level">高中</span></span>
+                            <span class="zh-TW"><span class="course-title">幾何學</span><span class="course-level">高中</span></span>
+                            <span class="en"><span class="course-title">Geometry</span><span class="course-level">High School</span></span>
+                            <span class="ja"><span class="course-title">幾何学</span><span class="course-level">高校</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">Google 数据分析专业证书</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">Google 資料分析專業證書</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Google Data Analytics Professional Certificate</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">Googleデータアナリティクスプロフェッショナル認定</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">基于开源 EDA 工具的芯片设计导论</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">基於開源 EDA 工具的晶片設計導論</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Introduction to Chip Design with Open-Source EDA Tools</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">オープンソースEDAツールによるチップ設計入門</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">电磁学导论</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">電磁學導論</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Introduction to Electricity and Magnetism</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">電磁気学入門</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">力学导论</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">力學導論</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Introduction to Mechanics</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">力学入門</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">Python 与 Java 编程导论</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">Python 與 Java 程式設計導論</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Introduction to Programming with Python and Java</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">PythonとJavaによるプログラミング入門</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">半导体工艺导论 1</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">半導體製程導論 1</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Introduction to Semiconductor Process 1</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">半導体プロセス入門 1</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">半导体工艺导论 2</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">半導體製程導論 2</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Introduction to Semiconductor Process 2</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">半導体プロセス入門 2</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">热力学导论：能量传递</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">熱力學導論：能量傳遞</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Introduction to Thermodynamics: Transferring Energy from Here to There</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">熱力学入門：エネルギーの移動</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">学习数据科学的 SQL 基础</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">學習資料科學的 SQL 基礎</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Learn SQL Basics for Data Science</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">データサイエンスのためのSQL基礎</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">高级技术应用材料科学</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">高階技術應用材料科學</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Materials Science for Advanced Technological Application</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">先端技術応用材料科学</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">技术应用材料科学</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">技術應用材料科學</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Materials Science for Technological Application</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">技術応用材料科学</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">工程师数学</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">工程師數學</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Mathematics for Engineers</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">工学数学</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">数据驱动决策的现代统计学</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">數據驅動決策的現代統計學</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Modern Statistics for Data-Driven Decision-Making</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">データ駆動型意思決定のための現代統計学</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">有机化学</span><span class="course-level">高中</span></span>
+                            <span class="zh-TW"><span class="course-title">有機化學</span><span class="course-level">高中</span></span>
+                            <span class="en"><span class="course-title">Organic Chemistry</span><span class="course-level">High School</span></span>
+                            <span class="ja"><span class="course-title">有機化学</span><span class="course-level">高校</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">物理 1</span><span class="course-level">高中</span></span>
+                            <span class="zh-TW"><span class="course-title">物理 1</span><span class="course-level">高中</span></span>
+                            <span class="en"><span class="course-title">Physics 1</span><span class="course-level">High School</span></span>
+                            <span class="ja"><span class="course-title">物理学 1</span><span class="course-level">高校</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">波动与光学物理学</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">波動與光學物理學</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Physics of Waves and Optics</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">波動・光学物理学</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">微积分预备课程</span><span class="course-level">高中</span></span>
+                            <span class="zh-TW"><span class="course-title">微積分預備課程</span><span class="course-level">高中</span></span>
+                            <span class="en"><span class="course-title">Pre-Calculus</span><span class="course-level">High School</span></span>
+                            <span class="ja"><span class="course-title">基礎微積分</span><span class="course-level">高校</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">快速原型与模具制造</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">快速原型與模具製造</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Rapid Prototyping and Tooling</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">ラピッドプロトタイピングとツーリング</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">半导体表征</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">半導體特性分析</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Semiconductor Characterization</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">半導体評価・キャラクタリゼーション</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">半导体器件</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">半導體元件</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Semiconductor Devices</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">半導体デバイス</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">半导体封装</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">半導體封裝</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Semiconductor Packaging</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">半導体パッケージング</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">单变量微积分</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">單變數微積分</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Single Variable Calculus</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">一変数微積分</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">统计与概率</span><span class="course-level">高中</span></span>
+                            <span class="zh-TW"><span class="course-title">統計與機率</span><span class="course-level">高中</span></span>
+                            <span class="en"><span class="course-title">Statistics and Probability</span><span class="course-level">High School</span></span>
+                            <span class="ja"><span class="course-title">統計学と確率論</span><span class="course-level">高校</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">技术与创业</span><span class="course-level">学士学位</span></span>
+                            <span class="zh-TW"><span class="course-title">技術與創業</span><span class="course-level">學士學位</span></span>
+                            <span class="en"><span class="course-title">Technology & Entrepreneurship</span><span class="course-level">Bachelor's Degree</span></span>
+                            <span class="ja"><span class="course-title">テクノロジーと起業論</span><span class="course-level">学士号</span></span>
+                        </li>
+                        <li>
+                            <span class="zh-CN"><span class="course-title">三角学</span><span class="course-level">高中</span></span>
+                            <span class="zh-TW"><span class="course-title">三角學</span><span class="course-level">高中</span></span>
+                            <span class="en"><span class="course-title">Trigonometry</span><span class="course-level">High School</span></span>
+                            <span class="ja"><span class="course-title">三角法</span><span class="course-level">高校</span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

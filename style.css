@@ -1,0 +1,646 @@
+/* Imports the Inter font family with various weights from Google Fonts. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* FOUC Mitigation: Hide body until DOM is fully constructed by JS */
+body {
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* Class toggled by JS once injection and evaluation are complete */
+body.dom-loaded {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.15s ease-in;
+}
+
+/* Defines the core color variables for the permanent dark mode state. */
+:root {
+    --bg-color: #111111;
+    --text-main: #CCCCCC;
+    --text-header: #FFFFFF;
+    --text-meta: #888888;
+    --accent-glow: #E5E5E5;
+    --accent-soft: #FFFFFF;
+    --nav-bg: rgba(17, 17, 17, 0.85);
+    --card-bg: #1E1E1E;
+    --card-hover: #222222;
+    --dropdown-bg: rgba(30, 30, 30, 0.98);
+    --border-color: #333333;
+    --border-hover: #FFFFFF;
+    --hero-gradient: linear-gradient(145deg, #1A1A1A, #111111);
+    --star-opacity: 0.8;
+    --btn-text: #111111;
+}
+
+/* Enables smooth scrolling behavior across the entire HTML document. */
+html { scroll-behavior: smooth; }
+
+/* Sets the base styling for the document body including background, typography, and layout resets. */
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0; padding: 0; line-height: 1.7; overflow-x: hidden; position: relative;
+    transition: background-color 0.3s ease, color 0.6s ease;
+
+    /* Security Deterrence: Disable text highlighting */
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+/* Creates a blurred radial background effect for the dark theme. */
+html::before, html::after {
+    content: ""; position: fixed; border-radius: 50%; filter: blur(140px); z-index: -2; pointer-events: none;
+}
+
+/* Positions the primary background blur at the top left of the viewport. */
+html::before { top: -10%; left: -10%; width: 60vw; height: 60vw; background: rgba(120, 120, 120, 0.05); }
+
+/* Positions the secondary background blur at the bottom right of the viewport. */
+html::after { bottom: -20%; right: -10%; width: 70vw; height: 70vw; background: rgba(80, 80, 80, 0.08); }
+
+/* Generates the base styling for the background star particles. */
+body::before, body::after {
+    content: ""; border-radius: 50%; opacity: var(--star-opacity); z-index: -1; position: fixed; pointer-events: none;
+    background: #FFFFFF;
+}
+
+/* Defines the size and animation speed for the slow twinkling star particles. */
+body::before { width: 2px; height: 2px; animation: twinkle-slow 6s ease-in-out infinite alternate; }
+
+/* Defines the size and animation speed for the fast twinkling star particles. */
+body::after { width: 3px; height: 3px; animation: twinkle-fast 4s ease-in-out infinite alternate; }
+
+/* Styles the primary page heading with bold weight and tight letter spacing. */
+h1 { color: var(--text-header); font-weight: 700; font-size: 2.8rem; margin-bottom: 12px; letter-spacing: -0.5px; }
+
+/* Styles section headings with centered text alignment and generous vertical margins. */
+h2 { color: var(--text-header); font-weight: 600; font-size: 2rem; text-align: center; margin: 80px 0 40px; }
+
+/* Styles item subheadings with standard spacing and a semi-bold font weight. */
+h3 { color: var(--text-header); font-weight: 600; font-size: 1.2rem; margin-bottom: 8px; margin-top: 24px; }
+
+/* Applies standard spacing and color to all paragraph text elements. */
+p { margin-bottom: 15px; color: var(--text-main); }
+
+/* Defines the default color and transition state for all hyperlinks. */
+a { color: var(--text-meta); text-decoration: none; transition: color 0.3s ease; }
+
+/* Changes the hyperlink color to the header color upon cursor hover. */
+a:hover { color: var(--text-header); }
+
+/* Creates a sticky navigation bar with a blurred backdrop effect. */
+nav {
+    position: sticky; top: 0; background: var(--nav-bg); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+    display: flex; justify-content: center; align-items: center; padding: 8px 5%; border-bottom: 1px solid var(--border-color); z-index: 1000;
+}
+
+/* Centers the navigation controls within the main navigation bar container. */
+.nav-central-command {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+}
+
+/* Styles the individual control buttons located in the navigation bar. */
+.control-btn {
+    display: flex; align-items: center; justify-content: center; background: var(--card-bg);
+    border: 1px solid var(--border-color); border-radius: 30px; padding: 4px 12px; cursor: pointer; transition: all 0.3s ease; position: relative;
+    min-width: 40px; height: 34px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* Applies a border color change and a slight vertical lift to control buttons upon cursor hover. */
+.control-btn:hover { border-color: var(--border-hover); transform: translateY(-1px); }
+
+/* Styles the display text indicating the currently active page within the navigation menu. */
+#active-page-display {
+    color: var(--text-main);
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+}
+
+/* Sets relative positioning for dropdown triggers within the navigation menu. */
+.nav-item-dropdown { position: relative; display: flex; align-items: center; }
+
+/* Configures the hidden and absolutely positioned dropdown menu containers. */
+.dropdown-content {
+    opacity: 0; visibility: hidden; pointer-events: none;
+    position: absolute; left: 50%; transform: translateX(-50%) translateY(5px); top: calc(100% + 8px); background: var(--dropdown-bg); backdrop-filter: blur(12px);
+    min-width: 180px; box-shadow: 0px 10px 30px rgba(0,0,0,0.3); z-index: 2000; border: 1px solid var(--border-color); border-radius: 12px; padding: 8px 0;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+
+/* Reveals the dropdown content when the parent navigation item is hovered. */
+.lang-dropdown:hover .dropdown-content, .nav-item-dropdown:hover .dropdown-content {
+    opacity: 1; visibility: visible; pointer-events: auto; transform: translateX(-50%) translateY(0);
+}
+
+/* Creates an invisible hover bridge between the trigger and the dropdown menu. */
+.dropdown-content::before { content: ''; position: absolute; top: -12px; left: 0; width: 100%; height: 12px; background: transparent; }
+
+/* Styles the individual text links inside the dropdown menus. */
+.dropdown-content a { color: var(--text-main); padding: 8px 20px; display: block; font-size: 0.85rem; font-weight: 500; border-bottom: 1px solid var(--border-color); text-align: left; }
+
+/* Removes the bottom border from the final link in a dropdown menu list. */
+.dropdown-content a:last-child { border-bottom: none; }
+
+/* Inverts the background and text color of dropdown links on hover to provide high contrast. */
+.dropdown-content a:hover { background-color: var(--accent-soft); color: var(--btn-text); }
+
+/* Centers the language globe icon within its designated container. */
+.lang-text-icon { font-size: 1rem; display: flex; align-items: center; justify-content: center; }
+
+/* Constrains the maximum width of the main content area and centers it horizontally. */
+main { max-width: 900px; margin: 40px auto; padding: 0 20px; position: relative; z-index: 1; }
+
+/* Adds vertical spacing beneath all major content sections. */
+section { margin-bottom: 50px; }
+
+/* Styles the home section container with a background gradient and a blurred backdrop. */
+#home { background: var(--hero-gradient); border: 1px solid var(--border-color); border-radius: 24px; backdrop-filter: blur(20px); position: relative; overflow: visible; }
+
+/* Configures the hero banner element at the top of the home section. */
+.hero-banner { height: 180px; position: relative; border-bottom: 1px solid var(--border-color); background-image: url('images/home_background.png'); background-size: cover; background-position: center; border-radius: 24px 24px 0 0; }
+
+/* Positions and styles the circular profile picture to overlap the hero banner. */
+.profile-pic {
+    width: 130px; height: 130px; border-radius: 50%; object-fit: cover; position: absolute; left: 50%; bottom: -65px;
+    transform: translateX(-50%); border: 4px solid var(--bg-color); box-shadow: 0 0 25px rgba(0,0,0,0.5); z-index: 2;
+}
+
+/* Adjusts the padding inside the home content block to properly accommodate the overlapping profile picture. */
+.home-content { padding: 85px 40px 40px; text-align: center; }
+
+/* Constrains the statistics section width and applies strategic vertical spacing. */
+#statistics { margin: 60px auto 40px; padding: 0; }
+
+/* Defines a responsive 3-column CSS grid layout for the metrics display. */
+.stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; list-style: none; padding: 0; }
+
+/* Styles individual metric cards with a blurred backdrop and border transitions. */
+.stat-item { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 32px 24px; text-align: center; backdrop-filter: blur(10px); transition: transform 0.3s ease, border-color 0.6s ease; }
+
+/* Triggers a border color change on hover. */
+.stat-item:hover { border-color: var(--border-hover); }
+
+/* Styles the dynamic target integer with a bold weight and prominent scale. */
+.stat-number { color: var(--text-header); font-size: 3rem; font-weight: 700; margin-bottom: 8px; line-height: 1; }
+
+/* Styles the localized descriptive label situated beneath the dynamic integer. */
+.stat-label { color: var(--text-meta); font-size: 0.9rem; font-weight: 500; }
+
+/* Defines the base structural styling for all standard content cards. */
+.job-item { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 24px 32px; margin-bottom: 16px; backdrop-filter: blur(10px); transition: background-color 0.3s ease, border-color 0.6s ease; box-shadow: 0 4px 20px rgba(0,0,0,0.02); }
+
+/* Adds a subtle hover effect to standard content cards to visually indicate interactivity. */
+.job-item:hover { background: var(--card-hover); border-color: var(--border-hover); }
+
+/* Styles metadata tags with a distinct background color and a reduced font size. */
+.meta { font-size: 0.85rem; color: var(--text-main); margin-bottom: 16px; display: inline-block; background: var(--border-color); padding: 4px 14px; border-radius: 20px; font-weight: 500; }
+
+/* Removes default padding and standard styling from unordered lists. */
+ul { padding-left: 0; list-style: none; }
+
+/* Styles list items with relative positioning to accommodate custom bullet points. */
+li { position: relative; padding-left: 24px; margin-bottom: 12px; }
+
+/* Inserts a custom geometric bullet point before standard list items. */
+li::before { content: "■"; position: absolute; left: 0; top: 2px; color: var(--text-meta); font-size: 0.7rem; }
+
+/* Prevents the custom geometric bullet point from appearing in the services grid. */
+.services-list li::before { display: none; }
+
+/* Prevents the custom geometric bullet point from appearing in the skills grid. */
+.skills-grid li::before { display: none; }
+
+/* Prevents the custom geometric bullet point from appearing in the statistics grid. */
+.stats-grid li::before { display: none; }
+
+/* Defines a responsive grid layout specifically for the services list. */
+.services-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; list-style: none; padding: 0; }
+
+/* Styles individual items located within the services grid. */
+.services-list li { background: var(--card-bg); padding: 15px; border: 1px solid var(--border-color); text-align: center; border-radius: 12px; backdrop-filter: blur(10px); }
+
+/* Styles the footer area with centered text and a top border. */
+footer { text-align: center; padding: 30px 20px; font-size: 0.85rem; color: var(--text-meta); border-top: 1px solid var(--border-color); margin-top: 60px; }
+
+/* Constrains the footer content width to match the main content container. */
+.footer-container { max-width: 900px; margin: 0 auto; line-height: 1.6; }
+
+/* Applies specific bottom margins to paragraphs located within the footer. */
+.footer-container p { margin-bottom: 10px; }
+
+/* Arranges the pill-shaped page links in a centered and wrapping flex container. */
+.page-pills { display: flex; justify-content: center; gap: 12px; margin: 0 0 40px; flex-wrap: wrap; }
+
+/* Defines the base styling for all pill links and contact buttons. */
+.pill-link, .contact-btn {
+    position: relative;
+    overflow: hidden;
+    background: var(--accent-soft);
+    color: var(--btn-text);
+    padding: 8px 20px;
+    border-radius: 30px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    white-space: nowrap;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Alters the background and slightly raises the button upon cursor hover. */
+.pill-link:hover, .contact-btn:hover {
+    background: var(--accent-glow);
+    border-color: var(--border-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Scales the button down slightly to provide visual feedback when clicked. */
+.pill-link:active, .contact-btn:active {
+    transform: translateY(1px) scale(0.96);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.1s ease;
+}
+
+/* Creates an invisible slanted highlight element ready to animate across the button. */
+.pill-link::after, .contact-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(150, 150, 150, 0.2) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    pointer-events: none;
+}
+
+/* Animates the slanted highlight across the button surface during a hover state. */
+.pill-link:hover::after, .contact-btn:hover::after {
+    left: 200%;
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Configures the full-screen blurred overlay backdrop for the language selection popup. */
+.lang-popup-overlay {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%; 
+    background-color: var(--bg-color);
+    z-index: 9999;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Class to trigger the fade-out for the language selection popup. */
+.lang-popup-overlay.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Required for the pseudo-elements to render inside the overlay. */
+.lang-popup-overlay::before, .lang-popup-overlay::after {
+    content: ""; 
+    border-radius: 50%; 
+    opacity: var(--star-opacity); 
+    position: absolute; 
+    top: 0; /* Ensures stars cover the full viewport */
+    left: 0; 
+    pointer-events: none;
+    background: #FFFFFF;
+}
+
+/* Base dimensions for the shadows to originate from. */
+.lang-popup-overlay::before { 
+    width: 2px; 
+    height: 2px; 
+    animation: twinkle-slow 6s ease-in-out infinite alternate;
+}
+.lang-popup-overlay::after { 
+    width: 3px; 
+    height: 3px; 
+    animation: twinkle-fast 4s ease-in-out infinite alternate;
+}
+
+/* Styles the central dialog box container for the language selection popup. */
+.lang-popup-content { 
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 45px 35px;
+    border-radius: 28px;
+    text-align: center;
+    max-width: 550px;
+    width: 90%;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    position: relative;
+    z-index: 2;
+}
+
+/* Styles the static title within the language selection popup. */
+.popup-title {
+    color: var(--text-header);
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 16px;
+}
+
+/* Styles non-clickable regional category headers within the dropdown list. */
+.dropdown-header {
+    font-size: 0.75rem;
+    color: var(--text-meta);
+    padding: 12px 20px 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: default;
+    text-align: left;
+}
+
+/* Creates subtle horizontal separator lines between distinct regional categories. */
+.dropdown-divider {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 4px 0;
+    width: 100%;
+}
+
+/* Centers the milestone timeline items within a vertical flex container. */
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-top: 40px;
+}
+
+/* Draws the vertical connecting line between milestone entries. */
+.barbell-connector {
+    width: 4px;
+    height: 80px;
+    background-color: var(--border-color);
+    position: relative;
+    margin: 10px 0;
+    transition: all 0.8s ease;
+    transform: translateY(-8px);
+}
+
+/* Generates the circular endpoints on the vertical timeline connector. */
+.barbell-connector::before, .barbell-connector::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: var(--border-color);
+    transition: all 0.8s ease;
+}
+
+/* Positions the top circular endpoint of the timeline connector. */
+.barbell-connector::before { top: -7px; }
+
+/* Positions the bottom circular endpoint of the timeline connector. */
+.barbell-connector::after { bottom: -7px; }
+
+/* Triggers a glowing highlight state on the timeline connector when it intersects the viewport. */
+.barbell-connector.glow {
+    background-color: var(--text-header);
+    box-shadow: 0 0 10px var(--border-color);
+}
+
+/* Applies the glowing highlight state to the circular endpoints of the connector. */
+.barbell-connector.glow::before, .barbell-connector.glow::after {
+    background-color: var(--text-header);
+    box-shadow: 0 0 10px var(--border-color);
+}
+
+/* Adjusts navigation elements to remain usable on smaller device screens. */
+@media (max-width: 850px) {
+    .nav-central-command { gap: 8px; }
+    .control-btn { padding: 4px 10px; min-width: 36px; height: 32px; font-size: 0.75rem; }
+}
+
+/* Adapts the statistics grid to a 2-column layout on standard tablet displays. */
+@media (max-width: 768px) {
+    .stats-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Adapts the statistics grid to a single-column layout on mobile device screens. */
+@media (max-width: 480px) {
+    .stats-grid { grid-template-columns: 1fr; }
+}
+
+/* Defines the keyframe animation for the slowly pulsing background stars. */
+@keyframes twinkle-slow { 0% { opacity: 0.1; } 50% { opacity: 0.5; } 100% { opacity: 0.1; } }
+
+/* Defines the keyframe animation for the rapidly pulsing background stars. */
+@keyframes twinkle-fast { 0% { opacity: 0.4; } 50% { opacity: 0.1; } 100% { opacity: 0.4; } }
+
+/* Constrains the visible area to a single page width. */
+.popup-viewport {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Flex container acting as the sliding track. */
+.popup-slider {
+    display: flex;
+    width: 200%; 
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Forces the slider to translate to the second page. */
+.popup-slider.slide-active {
+    transform: translateX(-50%);
+}
+
+/* Individual page dimensions. */
+.popup-page {
+    width: 50%;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+/* Internal scrolling for the region list to prevent modal vertical overflow. */
+.popup-scroll-list {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 8px 0;
+    flex-grow: 1;
+    min-height: 0;
+}
+
+/* Adapts original dropdown anchor styling for the new scroll list. */
+.popup-scroll-list a {
+    color: var(--text-main);
+    padding: 10px 20px;
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: left;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.popup-scroll-list a:hover {
+    background-color: var(--accent-soft);
+    color: var(--btn-text);
+}
+
+/* Target all card-like elements and set their hidden state. */
+.job-item, 
+.stat-item, 
+.cause-list li, 
+.contact-list li, 
+.course-list li, 
+.language-list li, 
+.skills-grid li, 
+.services-list li {
+    opacity: 0;
+    transform: translateY(30px);
+    /* Cubic-bezier curve for fluid motion. */
+    transition: opacity 0.6s cubic-bezier(0.165, 0.84, 0.44, 1), 
+                transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    /* Hint to the browser to optimize these properties via the GPU. */
+    will-change: opacity, transform;
+}
+
+/* Define the active state that JavaScript will toggle. */
+.job-item.is-visible, 
+.stat-item.is-visible, 
+.cause-list li.is-visible, 
+.contact-list li.is-visible, 
+.course-list li.is-visible, 
+.language-list li.is-visible, 
+.skills-grid li.is-visible, 
+.services-list li.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Cookie Banner Styling */
+.cookie-banner {
+    position: fixed;
+    bottom: -100px; /* Hidden initially for the slide-up animation */
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--dropdown-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 16px 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 9000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    width: max-content;
+    max-width: 90vw;
+}
+
+/* Class toggled by JS to trigger the entrance animation */
+.cookie-banner.show-banner {
+    bottom: 30px;
+    opacity: 1;
+    visibility: visible;
+}
+
+.cookie-text {
+    color: var(--text-main);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* Base + variant hybrid localization matrix */
+
+/* Hides Traditional Chinese, Japanese, and all English variants when Simplified Chinese is active. */
+body.lang-zh-CN .zh-TW, body.lang-zh-CN .ja, body.lang-zh-CN .en, body.lang-zh-CN .en-US, body.lang-zh-CN .en-SG, body.lang-zh-CN .en-001 { display: none; }
+
+/* Hides Simplified Chinese, Japanese, and all English variants when Traditional Chinese is active. */
+body.lang-zh-TW .zh-CN, body.lang-zh-TW .ja, body.lang-zh-TW .en, body.lang-zh-TW .en-US, body.lang-zh-TW .en-SG, body.lang-zh-TW .en-001 { display: none; }
+
+/* Hides Simplified Chinese, Traditional Chinese, and all English variants when Japanese is active. */
+body.lang-ja .zh-CN, body.lang-ja .zh-TW, body.lang-ja .en, body.lang-ja .en-US, body.lang-ja .en-SG, body.lang-ja .en-001 { display: none; }
+
+/* Hides Asian languages and divergent English variants when US English is active. Base .en remains visible. */
+body.lang-en-US .zh-CN, body.lang-en-US .zh-TW, body.lang-en-US .ja, body.lang-en-US .en-SG, body.lang-en-US .en-001 { display: none; }
+
+/* Hides Asian languages and divergent English variants when Singapore English is active. Base .en remains visible. */
+body.lang-en-SG .zh-CN, body.lang-en-SG .zh-TW, body.lang-en-SG .ja, body.lang-en-SG .en-US, body.lang-en-SG .en-001 { display: none; }
+
+/* Hides Asian languages and divergent English variants when International English is active. Base .en remains visible. */
+body.lang-en-001 .zh-CN, body.lang-en-001 .zh-TW, body.lang-en-001 .ja, body.lang-en-001 .en-US, body.lang-en-001 .en-SG { display: none; }
+
+/* Styles the dynamic navigation icon for state transitions. */
+.nav-icon {
+    display: inline-block;
+    margin-left: 6px;
+    font-size: 0.7rem;
+    color: var(--text-meta);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Applies the rotation transformation when the parent container is hovered or active. */
+.nav-item-dropdown:hover .nav-icon {
+    transform: rotate(180deg);
+    color: var(--text-header);
+}
+
+/* Defines the attention-grabbing pulse animation for undiscovered navigation elements. */
+@keyframes attention-pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.3);
+        border-color: var(--border-color);
+    }
+    70% {
+        box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+        border-color: var(--border-hover);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+        border-color: var(--border-color);
+    }
+}
+
+/* Class toggled by JavaScript to apply the pulse animation. */
+.pulse-attention {
+    animation: attention-pulse 2.5s infinite cubic-bezier(0.165, 0.84, 0.44, 1);
+}

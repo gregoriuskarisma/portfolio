@@ -1,0 +1,82 @@
+<!--Contacts Page-->
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="ms" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        section {
+            scroll-margin-top: 110px;
+        }
+        .contact-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .contact-list li {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .contact-list li::before {
+            content: none !important;
+            display: none !important;
+        }
+        .contact-title {
+            font-weight: 600;
+            color: var(--text-header);
+            display: block;
+            margin-bottom: 5px;
+        }
+        .contact-level {
+            font-size: 0.9rem;
+            color: var(--text-meta);
+            display: block;
+            margin-bottom: 10px;
+            word-break: break-all;
+        }
+        .contact-desc {
+            font-size: 0.8rem;
+            color: var(--text-main);
+            font-style: italic;
+            display: block;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <section id="contacts">
+            <h2>
+                <span class="zh-CN">联系方式</span>
+                <span class="zh-TW">聯絡方式</span>
+                <span class="en">Contacts</span>
+                <span class="ja">連絡先</span>
+            </h2>
+
+            <div class="job-item">
+                <div class="content-block">
+                    <ul class="contact-list" id="dynamic-contact-list">
+                        <!-- Nodes injected dynamically via script.js -->
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

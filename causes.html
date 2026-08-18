@@ -1,0 +1,81 @@
+<!--Causes Page-->
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="ms" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        section {
+            scroll-margin-top: 110px;
+        }
+        .cause-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        .cause-list li {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--text-main);
+            text-align: center;
+        }
+        .cause-list li::before {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <section id="causes">
+            <h2>
+                <span class="zh-CN">公益事业</span>
+                <span class="zh-TW">公益事業</span>
+                <span class="en">Causes</span>
+                <span class="ja">社会貢献活動</span>
+            </h2>
+
+            <div class="job-item">
+                <div class="content-block">
+                    <ul class="cause-list">
+                        <li>
+                            <span class="zh-CN">经济赋权</span>
+                            <span class="zh-TW">經濟培力</span>
+                            <span class="en">Economic Empowerment</span>
+                            <span class="ja">経済的エンパワーメント</span>
+                        </li>
+                        <li>
+                            <span class="zh-CN">教育</span>
+                            <span class="zh-TW">教育</span>
+                            <span class="en">Education</span>
+                            <span class="ja">教育</span>
+                        </li>
+                        <li>
+                            <span class="zh-CN">科技</span>
+                            <span class="zh-TW">科技</span>
+                            <span class="en">Science and Technology</span>
+                            <span class="ja">科学技術</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

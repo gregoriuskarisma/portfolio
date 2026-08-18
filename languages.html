@@ -1,0 +1,73 @@
+<!--Languages Page-->
+
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="ms" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/favicon.png" type="image/png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        section {
+            scroll-margin-top: 110px;
+        }
+        .language-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .language-list li {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            padding: 15px 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .language-list li::before {
+            content: none !important;
+            display: none !important;
+        }
+        .lang-title {
+            font-weight: 600;
+            color: var(--text-header);
+            display: block;
+            margin-bottom: 5px;
+        }
+        .lang-level {
+            font-size: 0.9rem;
+            color: var(--text-meta);
+        }
+    </style>
+</head>
+<body>
+
+    <main>
+        <section id="languages">
+            <h2>
+                <span class="zh-CN">语言能力</span>
+                <span class="zh-TW">語言能力</span>
+                <span class="en">Languages</span>
+                <span class="ja">語学力</span>
+            </h2>
+
+            <div class="job-item">
+                <div class="content-block">
+                    <ul class="language-list" id="dynamic-language-list">
+                        <!-- Nodes injected dynamically via script.js -->
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

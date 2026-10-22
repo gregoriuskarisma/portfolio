@@ -1,0 +1,255 @@
+/* ==========================================================================
+   RESET & SYSTEM GUARDS
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  
+  /* Disable text selection and drag highlighting */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+
+  /* Explicitly disallow any animation or transition */
+  animation: none !important;
+  transition: none !important;
+}
+
+/* ==========================================================================
+   THEME VARIABLES & BASE TYPOGRAPHY
+   ========================================================================== */
+
+:root {
+  --bg-editor: #1e1e1e;
+  --bg-surface: #252526;
+  --bg-island: #000000;
+  --bg-island-active: #2d2d2d;
+  --border-subtle: #333333;
+  --border-line: #3c3c3c;
+  --text-pure: #ffffff;
+  --text-main: #d4d4d4;
+  --text-muted: #858585;
+  --text-dim: #6e6e6e;
+  --font-stack: 'Open Sans', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--bg-editor);
+  color: var(--text-main);
+  scroll-behavior: auto;
+}
+
+body {
+  font-family: var(--font-stack);
+  background-color: var(--bg-editor);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   DYNAMIC ISLAND NAVIGATION
+   ========================================================================== */
+
+.dynamic-island {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--bg-island);
+  border: 1px solid var(--border-subtle);
+  border-radius: 9999px;
+  padding: 0.35rem 0.6rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.75);
+}
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: var(--text-muted);
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  line-height: 1.2;
+}
+
+.lang-btn:focus {
+  outline: none;
+}
+
+.lang-btn.active {
+  background-color: var(--bg-island-active);
+  color: var(--text-pure);
+  font-weight: 600;
+}
+
+.nav-divider {
+  display: inline-block;
+  width: 1px;
+  height: 0.9rem;
+  background-color: var(--border-line);
+  margin: 0 0.15rem;
+}
+
+/* ==========================================================================
+   PAGE CONTAINER & VIEW SWITCHING
+   ========================================================================== */
+
+.page-container {
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 5.5rem 2rem 3rem 2rem;
+  flex: 1 0 auto;
+}
+
+.lang-view {
+  display: none;
+}
+
+.lang-view.active {
+  display: block;
+}
+
+/* ==========================================================================
+   BANNER SECTION
+   ========================================================================== */
+
+.banner-section {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.banner-image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1080 / 270;
+  display: block;
+  border-radius: 12px;
+}
+
+/* ==========================================================================
+   PDF CONTAINER & CANVAS RENDERING
+   ========================================================================== */
+
+.pdf-viewer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.pdf-page-canvas {
+  width: 100% !important;
+  max-width: 100%;
+  height: auto !important;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+  border: 1px solid var(--border-line);
+  background-color: var(--bg-surface);
+}
+
+.pdf-loading {
+  padding: 3rem 0;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* ==========================================================================
+   SITE FOOTER
+   ========================================================================== */
+
+.site-footer {
+  border-top: 1px solid var(--border-line);
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  background-color: var(--bg-surface);
+  flex-shrink: 0;
+}
+
+.footer-content {
+  display: none;
+}
+
+.footer-content.active {
+  display: block;
+}
+
+.footer-content p {
+  margin: 0.25rem 0;
+}
+
+.footer-location {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.flag-icon {
+  height: 1em;
+  width: auto;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.12);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   RESPONSIVE SCALING (TABLET & MOBILE)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .page-container {
+    padding: 5rem 1.25rem 2.5rem 1.25rem;
+  }
+
+  .banner-section {
+    margin-bottom: 1.5rem;
+  }
+
+  .pdf-viewer {
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dynamic-island {
+    top: 0.85rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .lang-btn {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.65rem;
+  }
+
+  .pdf-viewer {
+    gap: 1rem;
+  }
+}

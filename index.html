@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-TW" translate="no" class="notranslate">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
+  <title id="page-title">關於陳春天</title>
+  <meta id="page-description" name="description" content="陳春天在半導體產業。">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png">
+  
+  <!-- Typography: Open Sans (en-US) & Noto Sans TC (zh-TW) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Mozilla PDF.js Engine -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Dynamic Island Navigation -->
+  <nav class="dynamic-island" aria-label="Language Selector">
+    <button type="button" class="lang-btn active" id="btn-zh" data-lang="zh-TW" aria-label="切換至台灣本土市場">
+      <span>TWN</span>
+      <svg class="flag-icon" viewBox="0 0 300 200" aria-hidden="true" focusable="false">
+        <rect width="300" height="200" fill="#de2910"/>
+        <rect width="150" height="100" fill="#000095"/>
+        <g transform="translate(75,50)">
+          <polygon points="0,-37.5 4.85,-18.11 18.75,-32.48 13.26,-13.26 32.48,-18.75 18.11,-4.85 37.5,0 18.11,4.85 32.48,18.75 13.26,13.26 18.75,32.48 4.85,18.11 0,37.5 -4.85,18.11 -18.75,32.48 -13.26,13.26 -32.48,18.75 -18.11,4.85 -37.5,0 -18.11,-4.85 -32.48,-18.75 -13.26,-13.26 -18.75,-32.48 -4.85,-18.11" fill="#ffffff"/>
+          <circle r="18.75" fill="#000095"/>
+          <circle r="15" fill="#ffffff"/>
+        </g>
+      </svg>
+    </button>
+    <span class="nav-divider" aria-hidden="true"></span>
+    <button type="button" class="lang-btn" id="btn-en" data-lang="en-US" aria-label="Switch to US domestic market">
+      <span>USA</span>
+      <svg class="flag-icon" viewBox="0 0 1235 650" aria-hidden="true" focusable="false">
+        <defs>
+          <polygon id="nav-us-star" fill="#ffffff" points="0,-20 5.88,-5.88 20,-5.88 8.09,2.94 11.76,17.06 0,8.2 -11.76,17.06 -8.09,2.94 -20,-5.88 -5.88,-5.88"/>
+          <g id="nav-us-row-6">
+            <use href="#nav-us-star" x="41.17"/>
+            <use href="#nav-us-star" x="123.5"/>
+            <use href="#nav-us-star" x="205.83"/>
+            <use href="#nav-us-star" x="288.17"/>
+            <use href="#nav-us-star" x="370.5"/>
+            <use href="#nav-us-star" x="452.83"/>
+          </g>
+          <g id="nav-us-row-5">
+            <use href="#nav-us-star" x="82.33"/>
+            <use href="#nav-us-star" x="164.67"/>
+            <use href="#nav-us-star" x="247"/>
+            <use href="#nav-us-star" x="329.33"/>
+            <use href="#nav-us-star" x="411.67"/>
+          </g>
+        </defs>
+        <rect width="1235" height="650" fill="#b22234"/>
+        <path d="M0,75h1235M0,175h1235M0,275h1235M0,375h1235M0,475h1235M0,575h1235" stroke="#ffffff" stroke-width="50"/>
+        <rect width="494" height="350" fill="#3c3b6e"/>
+        <use href="#nav-us-row-6" y="35"/>
+        <use href="#nav-us-row-5" y="70"/>
+        <use href="#nav-us-row-6" y="105"/>
+        <use href="#nav-us-row-5" y="140"/>
+        <use href="#nav-us-row-6" y="175"/>
+        <use href="#nav-us-row-5" y="210"/>
+        <use href="#nav-us-row-6" y="245"/>
+        <use href="#nav-us-row-5" y="280"/>
+        <use href="#nav-us-row-6" y="315"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Main Content Container -->
+  <main class="page-container">
+
+    <!-- Decorative Banner Section -->
+    <section class="banner-section" aria-hidden="true">
+      <img
+        src="banner.png"
+        alt=""
+        class="banner-image"
+        width="1080"
+        height="270"
+        loading="eager"
+        decoding="async"
+        draggable="false"
+      >
+    </section>
+    
+    <!-- ==================== ZH-TW CONTAINER ==================== -->
+    <div id="view-zh-TW" class="lang-view active">
+      <div id="pdf-render-zh" class="pdf-viewer" data-pdf="resume_zh-TW.pdf"></div>
+    </div>
+
+    <!-- ==================== EN-US CONTAINER ==================== -->
+    <div id="view-en-US" class="lang-view">
+      <div id="pdf-render-en" class="pdf-viewer" data-pdf="resume_en-US.pdf"></div>
+    </div>
+
+  </main>
+
+  <!-- Dynamic Footer -->
+  <footer class="site-footer">
+    <div id="footer-zh-TW" class="footer-content active">
+      <p>網站由 GK &amp; Team 代表陳春天設計與建置。</p>
+      <p class="footer-location">
+        <svg class="flag-icon" viewBox="0 0 300 200" aria-hidden="true" focusable="false">
+          <rect width="300" height="200" fill="#de2910"/>
+          <rect width="150" height="100" fill="#000095"/>
+          <g transform="translate(75,50)">
+            <polygon points="0,-37.5 4.85,-18.11 18.75,-32.48 13.26,-13.26 32.48,-18.75 18.11,-4.85 37.5,0 18.11,4.85 32.48,18.75 13.26,13.26 18.75,32.48 4.85,18.11 0,37.5 -4.85,18.11 -18.75,32.48 -13.26,13.26 -32.48,18.75 -18.11,4.85 -37.5,0 -18.11,-4.85 -32.48,-18.75 -13.26,-13.26 -18.75,-32.48 -4.85,-18.11" fill="#ffffff"/>
+            <circle r="18.75" fill="#000095"/>
+            <circle r="15" fill="#ffffff"/>
+          </g>
+        </svg>
+        <span>中華民國（臺灣）臺北市中正區</span>
+      </p>
+    </div>
+    <div id="footer-en-US" class="footer-content">
+      <p>Website designed and engineered by GK &amp; Team on behalf of Gregorius Karisma.</p>
+      <p class="footer-location">
+        <svg class="flag-icon" viewBox="0 0 1235 650" aria-hidden="true" focusable="false">
+          <defs>
+            <polygon id="us-star" fill="#ffffff" points="0,-20 5.88,-5.88 20,-5.88 8.09,2.94 11.76,17.06 0,8.2 -11.76,17.06 -8.09,2.94 -20,-5.88 -5.88,-5.88"/>
+            <g id="us-row-6">
+              <use href="#us-star" x="41.17"/>
+              <use href="#us-star" x="123.5"/>
+              <use href="#us-star" x="205.83"/>
+              <use href="#us-star" x="288.17"/>
+              <use href="#us-star" x="370.5"/>
+              <use href="#us-star" x="452.83"/>
+            </g>
+            <g id="us-row-5">
+              <use href="#us-star" x="82.33"/>
+              <use href="#us-star" x="164.67"/>
+              <use href="#us-star" x="247"/>
+              <use href="#us-star" x="329.33"/>
+              <use href="#us-star" x="411.67"/>
+            </g>
+          </defs>
+          <rect width="1235" height="650" fill="#b22234"/>
+          <path d="M0,75h1235M0,175h1235M0,275h1235M0,375h1235M0,475h1235M0,575h1235" stroke="#ffffff" stroke-width="50"/>
+          <rect width="494" height="350" fill="#3c3b6e"/>
+          <use href="#us-row-6" y="35"/>
+          <use href="#us-row-5" y="70"/>
+          <use href="#us-row-6" y="105"/>
+          <use href="#us-row-5" y="140"/>
+          <use href="#us-row-6" y="175"/>
+          <use href="#us-row-5" y="210"/>
+          <use href="#us-row-6" y="245"/>
+          <use href="#us-row-5" y="280"/>
+          <use href="#us-row-6" y="315"/>
+        </svg>
+        <span>Phoenix, AZ, USA</span>
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
